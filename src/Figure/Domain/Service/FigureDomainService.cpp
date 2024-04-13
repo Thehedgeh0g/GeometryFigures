@@ -91,21 +91,4 @@ CRectangle FigureDomainService::parseRectangle(const std::vector<std::string>& r
     };
 }
 
-uint32_t FigureDomainService::ParseColorCode(const std::string& colorCode)
-{
-    std::istringstream iss(colorCode);
-    std::string component;
-    uint32_t color = 0;
-    int shift = 24;
-
-    while (std::getline(iss, component, ','))
-    {
-        int value = std::stoi(component);
-        color |= static_cast<uint32_t>(value) << shift;
-        shift -= 8;
-    }
-
-    return color;
-}
-
 

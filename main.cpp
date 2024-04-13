@@ -4,7 +4,8 @@
 #include "include/Figure/App/Service/FigureAppService.h"
 #include "include/Figure/Infrastructure/Persistence/InMemory/FigureRepository.h"
 
-std::tuple<FigureQueryService*, FigureAppService*> initializeServices() {
+std::tuple<FigureQueryService*, FigureAppService*> initializeServices()
+{
     auto* figureRepository = new FigureRepository();
     auto* figureDomainService = new FigureDomainService(figureRepository);
     auto* figureAppService = new FigureAppService(figureDomainService);
@@ -12,12 +13,27 @@ std::tuple<FigureQueryService*, FigureAppService*> initializeServices() {
     return std::make_tuple(figureQueryService, figureAppService);
 }
 
-int main() {
+void PrintInstruction()
+{
+    std::cout << "data format:\n"
+                 "rectangle {right_top_vertex.x} {right_top_vertex.y} {left_bottom_vertex.x} {left_bottom_vertex.y} {outline_color} {fill_color}\n"
+                 "circle {center.x} {center.y} {radius} {outline_color} {fill_color}\n"
+                 "triangle {vertex1.x} {vertex1.y} {vertex2.x} {vertex2.y} {vertex3.x} {vertex3.y} {outline_color} {fill_color}\n"
+                 "line {vertex1.x} {vertex1.y} {vertex2.x} {vertex2.y} {outline_color}\n"
+                 "To exit enter empty string\n";
+}
+
+int main()
+{
     auto [figureQueryService, figureAppService] = initializeServices();
 
     std::string figureData;
+    system("cls");
+    PrintInstruction();
     while (std::getline(std::cin, figureData))
     {
+        system("cls");
+        PrintInstruction();
         if (figureData.empty())
         {
             break;
@@ -28,8 +44,13 @@ int main() {
     FigureDTO* figureWithSmallestPerimeter = figureQueryService->FindFigureWithSmallestPerimeter();
     FigureDTO* figureWithBiggestArea = figureQueryService->FindFigureWithBiggestArea();
 
-    std::cout << figureWithSmallestPerimeter->m_stringRepresentation << std::endl;
-    std::cout << figureWithBiggestArea->m_stringRepresentation << std::endl;
+    std::cout << figureWithSmallestPerimeter->m_stringRepresentation << std::endl
+              << "Perimeter: " << figureWithSmallestPerimeter->m_perimeter << std::endl;
+    std::cout << figureWithBiggestArea->m_stringRepresentation << std::endl
+              << "Area: " << figureWithBiggestArea->m_area << std::endl;
+
+    std::cout << "Press any button to exit...";
+    std::cin.get();
 
     delete figureQueryService;
     delete figureAppService;

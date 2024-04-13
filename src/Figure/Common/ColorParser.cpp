@@ -8,7 +8,9 @@
 
 uint32_t ColorParser::ParseColorCode(const std::string& colorCode)
 {
-    if (colorCode.size() != 7 || colorCode[0] != '#' || colorCode.find_first_not_of("0123456789abcdefABCDEF", 1) != std::string::npos) {
+    if (colorCode.size() != 7 || colorCode[0] != '#' ||
+        colorCode.find_first_not_of("0123456789abcdefABCDEF", 1) != std::string::npos)
+    {
         throw std::invalid_argument("Invalid color code format");
     }
 

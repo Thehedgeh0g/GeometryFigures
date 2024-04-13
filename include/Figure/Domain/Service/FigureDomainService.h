@@ -43,8 +43,6 @@ private:
     static CTriangle parseTriangle(const std::vector<std::string>& triangleParams);
 
     static CRectangle parseRectangle(const std::vector<std::string>& rectangleParams);
-
-    static uint32_t ParseColorCode(const std::string& colorCode);
 };
 
 
