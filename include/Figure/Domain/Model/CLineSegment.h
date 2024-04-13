@@ -22,6 +22,7 @@ public:
 
     [[nodiscard]] std::uint32_t GetOutlineColor() const override;
 
+    //с заглавной функции!!!
     [[nodiscard]] const CPoint& getStartPoint() const;
 
     [[nodiscard]] const CPoint& getEndPoint() const;

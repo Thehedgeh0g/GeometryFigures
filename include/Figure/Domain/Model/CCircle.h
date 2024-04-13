@@ -11,6 +11,7 @@
 
 class CCircle : public ISolidShape
 {
+    //todo: public -> protected -> private
 private:
     CPoint m_center;
     double m_radius;
@@ -32,6 +33,7 @@ public:
 
     [[nodiscard]] uint32_t GetFillColor() const override;
 
+    //
     [[nodiscard]] const CPoint& GetCenter() const;
 
     [[nodiscard]] double GetRadius() const;

@@ -3,7 +3,9 @@
 #include "include/Figure/Infrastructure/Query/FigureQueryService.h"
 #include "include/Figure/App/Service/FigureAppService.h"
 #include "include/Figure/Infrastructure/Persistence/InMemory/FigureRepository.h"
-
+//функция с  заглавной
+//утечки памяти из-за сырых указателей
+//уюрать все к едрени фени
 std::tuple<FigureQueryService*, FigureAppService*> initializeServices()
 {
     auto* figureRepository = new FigureRepository();

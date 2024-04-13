@@ -12,7 +12,8 @@
 class IFigureRepository
 {
 public:
-
+//todo: выяснить для чего нужен виртуальный деструктор
+//todo: fizzbuzz enterprise edition почитать
     virtual ~IFigureRepository() = default;
 
     virtual void StoreFigure(std::unique_ptr<IShape> figure) = 0;

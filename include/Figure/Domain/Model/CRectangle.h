@@ -19,6 +19,8 @@ private:
     uint32_t m_outlineColor;
     uint32_t m_fillColor;
 public:
+    //todo: Либо одна точка либо безшириныи высоты
+    //TODO: Изабвиться от передачи по ссылке
     CRectangle(
         const CPoint& rightTopVertex,
         const CPoint& leftBottomVertex,
